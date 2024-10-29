@@ -16,6 +16,7 @@ type Props = {
 const PaginationSelection = ({ page, pages, onPageChange }: Props) => {
   const pageNumbers = [];
   if (!page || !pages) return;
+  if (pages < 2) return;
   for (let i = 1; i <= pages; i++) {
     pageNumbers.push(i);
   }

@@ -2,8 +2,8 @@ import { useSearchRestaurants } from "@/api/RestaurantApi";
 import CuisineFilter from "@/components/CuisineFilter";
 import PaginationSelection from "@/components/PaginationSelection";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
-import SearchResultCard from "@/components/SearchResultCard";
 import SearchResultInfo from "@/components/SearchResultInfo";
+import SearchResultList from "@/components/SearchResultList";
 import SearchPageSkeleton from "@/components/skeletons/SearchPageSkeleton";
 import SortOptionDropdown from "@/components/SortOptionDropdown";
 import { useState } from "react";
@@ -112,9 +112,7 @@ const SearchPage = () => {
               />
             </div>
 
-            {results?.data.map((restaurant) => (
-              <SearchResultCard key={restaurant._id} restaurant={restaurant} />
-            ))}
+            <SearchResultList restaurants={results?.data} />
 
             <PaginationSelection
               page={results?.pagination.page}
