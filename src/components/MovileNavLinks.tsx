@@ -7,6 +7,18 @@ const MovileNavLinks = () => {
   return (
     <>
       <Link
+        to={"/order-status"}
+        className="flex bg-white items-center font-bold hover:text-orange-500"
+      >
+        <span>Order Status</span>
+      </Link>
+      <Link
+        to={"/manage-restaurant"}
+        className="flex bg-white items-center font-bold hover:text-orange-500"
+      >
+        <span>My Restaurant</span>
+      </Link>
+      <Link
         to={"/user-profile"}
         className="flex bg-white items-center font-bold hover:text-orange-500"
       >
