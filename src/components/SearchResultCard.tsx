@@ -11,7 +11,7 @@ const SearchResultCard = ({ restaurant }: Props) => {
   return (
     <Link
       to={`/details/${restaurant._id}`}
-      className="grid lg:grid-cols-[2fr_3fr] gap-5 border rounded-sm hover:border-orange-500 transition-all duration-200 group"
+      className="grid lg:grid-cols-[2fr_3fr] gap-5 border border-transparent rounded-md hover:border-orange-500 transition-all duration-200 group"
     >
       <AspectRatio ratio={16 / 6}>
         <img
@@ -22,7 +22,7 @@ const SearchResultCard = ({ restaurant }: Props) => {
       </AspectRatio>
 
       <div className="px-5 pb-3 md:px-0">
-        <h3 className="text-2xl font-bold tracking-tight mb-2 group-hover:underline">
+        <h3 className="text-2xl font-bold tracking-tight my-2 group-hover:underline group-hover:text-orange-500">
           {restaurant.restaurantName}
         </h3>
 
