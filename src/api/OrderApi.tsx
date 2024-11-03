@@ -18,6 +18,7 @@ type CheckoutSessionRequest = {
     city: string;
   };
   restaurantId: string;
+  orderId?: string;
 };
 
 export const useCreateCheckoutSession = () => {
