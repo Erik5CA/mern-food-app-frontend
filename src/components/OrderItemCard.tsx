@@ -37,7 +37,7 @@ const OrderItemCard = ({ order }: Props) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="grid md:grid-cols-4 gap-4 justify-between mb-3">
+        <CardTitle className="grid md:grid-cols-4 gap-4 justify-between mb-3 capitalize">
           <div>
             Customer Name:
             <span className="ml-2 font-normal">

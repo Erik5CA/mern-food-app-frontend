@@ -3,7 +3,7 @@ import { Restaurant } from "@/types";
 import { CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
-import { Trash } from "lucide-react";
+import { CircleMinus } from "lucide-react";
 
 type Props = {
   restaurant: Restaurant;
@@ -27,19 +27,18 @@ const OrderSumary = ({ restaurant, cartItems, removeFromCart }: Props) => {
       <CardHeader>
         <CardTitle className="text-lg font-bold tracking-tight flex justify-between">
           <span>Your Order</span>
-          <span>$ {getTotalCost()}</span>
         </CardTitle>
       </CardHeader>
 
       <CardContent className="flex flex-col gap-5">
         {cartItems.map((item) => (
-          <div className="flex justify-between">
+          <div key={item._id} className="flex justify-between">
             <span>
               <Badge className="mr-2">{item.quantity}</Badge>
               {item.name}
             </span>
             <span className="flex items-center gap-1">
-              <Trash
+              <CircleMinus
                 className="text-red-500 cursor-pointer"
                 size={20}
                 onClick={() => removeFromCart(item)}
@@ -56,6 +55,11 @@ const OrderSumary = ({ restaurant, cartItems, removeFromCart }: Props) => {
           <span>$ {(restaurant.deliveryPrice / 100).toFixed(2)}</span>
         </div>
         <Separator className="bg-orange-500" />
+
+        <div className="flex justify-between text-lg font-bold">
+          <span>Total</span>
+          <span>$ {getTotalCost()}</span>
+        </div>
       </CardContent>
     </>
   );

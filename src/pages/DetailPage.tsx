@@ -10,6 +10,7 @@ import { MenuItem as MenuItemType } from "../types";
 import CheckoutButton from "@/components/CheckoutButton";
 import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
 import { useCreateCheckoutSession } from "@/api/OrderApi";
+import DetailPageSkeleton from "@/components/skeletons/DetailPageSkeleton";
 
 export type CartItem = {
   _id: string;
@@ -100,7 +101,7 @@ const DetailPage = () => {
   };
 
   if (isLoading || !restaurant) {
-    return <span>Loading...</span>;
+    return <DetailPageSkeleton />;
   }
   return (
     <div className="flex flex-col gap-10">
@@ -116,13 +117,15 @@ const DetailPage = () => {
         <div className="flex flex-col gap-4">
           <RestaurantInfo restaurant={restaurant} />
           <span className="text-2xl font-bold tracking-tight">Menu</span>
-          {restaurant.menuItems.map((menuItem) => (
-            <MenuItem
-              menuItem={menuItem}
-              key={menuItem._id}
-              addToCart={() => addToCart(menuItem)}
-            />
-          ))}
+          <div className="grid sm:grid-cols-2 gap-3">
+            {restaurant.menuItems.map((menuItem) => (
+              <MenuItem
+                menuItem={menuItem}
+                key={menuItem._id}
+                addToCart={() => addToCart(menuItem)}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="relative">

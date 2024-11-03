@@ -21,7 +21,7 @@ const SearchResultCard = ({ restaurant }: Props) => {
         />
       </AspectRatio>
 
-      <div className="px-5 pb-3 md:px-0">
+      <div className="px-5 pb-3 lg:px-0">
         <h3 className="text-2xl font-bold tracking-tight my-2 group-hover:underline group-hover:text-orange-500">
           {restaurant.restaurantName}
         </h3>
@@ -36,7 +36,7 @@ const SearchResultCard = ({ restaurant }: Props) => {
             ))}
           </div>
 
-          <div className="flex gap-2 flex-col items-end md:items-start">
+          <div className="flex gap-2 flex-col items-end lg:items-start">
             <div className="flex items-center gap-1 text-green-600">
               <Clock className="text-green-600" />
               {restaurant.estimatedDeliveryTime} mins

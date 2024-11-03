@@ -6,21 +6,27 @@ type Props = {
 };
 const OrderStatusDetail = ({ order }: Props) => {
   return (
-    <div className="space-y-5">
-      <div className="flex flex-col">
-        <span className="font-bold">Delivering to:</span>
-        <span>{order.deliveryDetails.name}</span>
+    <div className="space-y-5 capitalize">
+      <div className="flex flex-col ">
+        <span className="font-bold text-lg">Delivering to</span>
         <span>
+          {" "}
+          <span className="font-semibold">Customer:</span>{" "}
+          {order.deliveryDetails.name}
+        </span>
+        <span>
+          <span className="font-semibold">Address: </span>
           {order.deliveryDetails.addressLine1}, {order.deliveryDetails.city}
         </span>
       </div>
 
       <div className="flex flex-col">
-        <span className="font-bold">Your Order</span>
+        <span className="font-bold text-lg">Order</span>
         <ul>
           {order.cartItems.map((item) => (
             <li key={item.menuItemId}>
-              {item.name} x {item.quantity}
+              <span className="text-orange-500">({item.quantity})</span>{" "}
+              {item.name}
             </li>
           ))}
         </ul>

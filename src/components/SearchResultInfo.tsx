@@ -8,8 +8,8 @@ type Props = {
 const SearchResultInfo = ({ total, city }: Props) => {
   if (!total && !city) return;
   return (
-    <div className="text-xl font-bold flex flex-col gap-3 justify-between lg:items-center lg:flex-row">
-      <div className="flex items-center gap-2">
+    <div className="text-sm md:text-xl font-bold flex flex-col gap-3 justify-between lg:items-center lg:flex-row">
+      <div className="flex items-center gap-2 justify-center sm:justify-start">
         <span className="text-white rounded-full w-8 bg-orange-500 text-center">
           {total}
         </span>{" "}

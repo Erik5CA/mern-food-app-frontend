@@ -5,6 +5,7 @@ import {
   useUpdateMyRestaurant,
 } from "@/api/MyRestaurantApi";
 import OrderItemCard from "@/components/OrderItemCard";
+import OrdersManageSkeleton from "@/components/skeletons/OrdersManageSkeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ManageRestaurantForm from "@/forms/manage-restaurant-form/ManageRestaurantForm";
 
@@ -14,7 +15,7 @@ const ManageRestaurantPage = () => {
     useCreateRestaurant();
   const { updateRestaurant, isLoading: isUpdateLoadin } =
     useUpdateMyRestaurant();
-  const { orders } = useGetMyRestaurantOrders();
+  const { orders, isLoading: isGetOrdersLoading } = useGetMyRestaurantOrders();
 
   const isEditing = !!restaurant;
 
@@ -29,10 +30,20 @@ const ManageRestaurantPage = () => {
         value="orders"
         className="space-y-5 bg-gray-50 rounded-lg p-10"
       >
-        <h2 className="text-2xl font-bold">{orders?.length} active orders</h2>
-        {orders?.map((order) => (
-          <OrderItemCard key={order._id} order={order} />
-        ))}
+        {isGetOrdersLoading ? (
+          <OrdersManageSkeleton />
+        ) : (
+          <>
+            <h2 className="text-2xl font-bold">
+              {orders?.length === 0
+                ? "No Active Orders"
+                : `${orders?.length ?? 0} Active orders`}
+            </h2>
+            {orders?.map((order) => (
+              <OrderItemCard key={order._id} order={order} />
+            ))}
+          </>
+        )}
       </TabsContent>
 
       <TabsContent value="manage-restaurant">

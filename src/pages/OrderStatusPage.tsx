@@ -1,13 +1,14 @@
 import { useGetMyOrders } from "@/api/OrderApi";
 import OrderStatusDetail from "@/components/OrderStatusDetail";
 import OrderStatusHeader from "@/components/OrderStatusHeader";
+import OrderStatusPageSkeleton from "@/components/skeletons/OrderStatusPageSkeleton";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 
 const OrderStatusPage = () => {
   const { orders, isLoading } = useGetMyOrders();
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <OrderStatusPageSkeleton />;
   }
 
   if (!orders || orders.length === 0) {
@@ -17,7 +18,7 @@ const OrderStatusPage = () => {
   return (
     <div className="space-y-10">
       {orders.map((order) => (
-        <div className="space-y-10 bg-gray-50 p-10 rounded-lg">
+        <div className="space-y-10 bg-gray-50 p-5 sm:p-10 rounded-lg">
           <OrderStatusHeader order={order} />
           <div className="grid gap-10 md:grid-cols-2">
             <OrderStatusDetail order={order} />

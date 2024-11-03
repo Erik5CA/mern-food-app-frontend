@@ -103,7 +103,7 @@ const SearchPage = () => {
           <SearchPageSkeleton />
         ) : (
           <>
-            <div className="flex flex-col gap-3 justify-between lg:items-center lg:flex-row">
+            <div className="flex flex-col gap-3 justify-between sm:items-center sm:flex-row ">
               <SearchResultInfo total={results?.pagination.total} city={city} />
 
               <SortOptionDropdown
