@@ -5,7 +5,7 @@ import RestaurantInfo from "@/components/RestaurantInfo";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card, CardFooter } from "@/components/ui/card";
 import { useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { MenuItem as MenuItemType } from "../types";
 import CheckoutButton from "@/components/CheckoutButton";
 import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
@@ -21,8 +21,8 @@ export type CartItem = {
 
 const DetailPage = () => {
   const { restaurantId } = useParams();
-  const [searchParams] = useSearchParams();
-  const cancel = searchParams.get("cancel");
+  // const [searchParams] = useSearchParams();
+  // const cancel = searchParams.get("cancel");
   const { restaurant, isLoading } = useGetRestaurant(restaurantId);
   const { createCheckoutSession, isLoading: isCheckoutLoading } =
     useCreateCheckoutSession();
@@ -83,11 +83,11 @@ const DetailPage = () => {
       return;
     }
 
-    let orderId: string | undefined;
-    if (cancel) {
-      const orderSessionId = sessionStorage.getItem("orderId");
-      orderId = orderSessionId ? orderSessionId : undefined;
-    }
+    // let orderId: string | undefined;
+    // if (cancel) {
+    const orderSessionId = sessionStorage.getItem(`orderId-${restaurantId}`);
+    const orderId = orderSessionId ? orderSessionId : undefined;
+    // }
 
     const checkoutData = {
       cartItems: cartItems.map((cartItem) => ({
@@ -107,7 +107,7 @@ const DetailPage = () => {
     };
 
     const data = await createCheckoutSession(checkoutData);
-    // sessionStorage.setItem("orderId",JSON.stringify(data.orderId))
+    sessionStorage.setItem(`orderId-${restaurantId}`, data.orderId);
     window.location.href = data.url;
   };
 
