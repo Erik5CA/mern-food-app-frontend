@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const MainNav = () => {
   const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
+  if (isLoading) return;
   return (
     <span className="flex space-x-2 items-center">
       {isAuthenticated ? (
@@ -24,7 +25,7 @@ const MainNav = () => {
           className="font-bold hover:text-orange-500 hover:bg-white hover:border-orange-500"
           onClick={async () => await loginWithRedirect()}
         >
-          {isLoading ? "Loading..." : "LogIn"}
+          LogIn
           <LogInIcon />
         </Button>
       )}

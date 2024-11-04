@@ -8,7 +8,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const useGetMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const getMyUserRequest = async () : Promise<User> => {
+  const getMyUserRequest = async (): Promise<User> => {
     const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {

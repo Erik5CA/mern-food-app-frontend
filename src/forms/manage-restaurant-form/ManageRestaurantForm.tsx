@@ -61,7 +61,7 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       cuisines: [],
-      menuItems: [{ name: "", price: 0 }],
+      // menuItems: [{ name: "", price: "" }],
     },
   });
 
@@ -122,7 +122,7 @@ const ManageRestaurantForm = ({ onSave, isLoading, restaurant }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 bg-gray-50 p-10 rounded-lg border border-orange-500 shadow-md"
+        className="space-y-8 bg-gray-50 p-5 md:p-10 rounded-lg border border-orange-500 shadow-md"
       >
         <DetailsSection />
         <Separator className="bg-orange-500" />

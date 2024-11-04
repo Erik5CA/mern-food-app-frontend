@@ -124,7 +124,7 @@ const DetailPage = () => {
         />
       </AspectRatio>
 
-      <div className="grid md:grid-cols-[4fr_2fr] gap-5 md:px-12 lg:px-32">
+      <div className="grid md:grid-cols-[3fr_2fr] gap-5 md:px-5 lg:px-32">
         <div className="flex flex-col gap-4">
           <RestaurantInfo restaurant={restaurant} />
           <span className="text-2xl font-bold tracking-tight">Menu</span>
@@ -139,8 +139,8 @@ const DetailPage = () => {
           </div>
         </div>
 
-        <div className="relative">
-          <Card className="sticky top-3">
+        <div>
+          <Card className="sticky top-24">
             <OrderSumary
               restaurant={restaurant}
               cartItems={cartItems}

@@ -91,7 +91,11 @@ const OrderItemCard = ({ order }: Props) => {
             </SelectTrigger>
             <SelectContent position="popper">
               {ORDER_STATUS.map((status) => (
-                <SelectItem key={status.value} value={status.value}>
+                <SelectItem
+                  key={status.value}
+                  value={status.value}
+                  disabled={status.value === "placed"}
+                >
                   {status.label}
                 </SelectItem>
               ))}

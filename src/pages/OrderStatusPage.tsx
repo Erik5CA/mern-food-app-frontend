@@ -4,7 +4,7 @@ import OrderStatusHeader from "@/components/OrderStatusHeader";
 import OrderStatusPageSkeleton from "@/components/skeletons/OrderStatusPageSkeleton";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const OrderStatusPage = () => {
   const [searchParams] = useSearchParams();
@@ -29,7 +29,18 @@ const OrderStatusPage = () => {
   }
 
   if (!orders || orders.length === 0) {
-    return <span>No orders found</span>;
+    return (
+      <div className="text-center flex flex-col items-center justify-center">
+        <h1 className="text-2xl font-bold">You have no orders</h1>
+        <p className="text-gray-500">
+          Go to the{" "}
+          <Link to={"/"} className="text-orange-500 underline">
+            search page
+          </Link>{" "}
+          to place an order
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -37,7 +48,7 @@ const OrderStatusPage = () => {
       {orders.map((order) => (
         <div
           key={order._id}
-          className="space-y-10 bg-gray-50 p-5 sm:p-10 rounded-lg"
+          className="space-y-10 bg-gray-50 p-5 sm:p-10 rounded-lg shadow-md"
         >
           <OrderStatusHeader order={order} />
           <div className="grid gap-10 md:grid-cols-2">

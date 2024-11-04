@@ -32,6 +32,7 @@ type Props = {
   isLoading: boolean;
   title?: string;
   buttonText?: string;
+  description?: string;
 };
 
 const UserProfileForm = ({
@@ -40,6 +41,7 @@ const UserProfileForm = ({
   currentUser,
   title = "User Profile",
   buttonText = "Submit",
+  description = "View and change your profile information here",
 }: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
@@ -54,13 +56,11 @@ const UserProfileForm = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSave)}
-        className="space-y-4 bg-gray-50 border border-orange-500 shadow-md rounded-lg p-3 md:p-10"
+        className="space-y-4 bg-gray-50 border border-orange-500 shadow-md rounded-lg p-5 md:p-10"
       >
         <div>
           <h2 className="text-2xl font-bold">{title}</h2>
-          <FormDescription>
-            View and change your profile information here
-          </FormDescription>
+          <FormDescription>{description}</FormDescription>
         </div>
 
         <FormField

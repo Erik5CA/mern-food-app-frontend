@@ -3,10 +3,8 @@ import { useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import LoadingButton from "./LoadingButton";
 import { Dialog, DialogTrigger, DialogContent } from "./ui/dialog";
-import UserProfileForm, {
-  UserFormData,
-} from "@/forms/user-profile-form/UserProfileForm";
-import { useGetMyUser } from "@/api/MyUserApi";
+import { UserFormData } from "@/forms/user-profile-form/UserProfileForm";
+import DeliveryDetailsForm from "./DeliveryDetailsForm";
 
 type Props = {
   onCheckout: (userFormData: UserFormData) => void;
@@ -20,8 +18,6 @@ const CheckoutButton = ({ disabled, onCheckout, isLoading }: Props) => {
     isLoading: isAuthLoading,
     loginWithRedirect,
   } = useAuth0();
-
-  const { currentUser, isLoading: isGetLoading } = useGetMyUser();
 
   const { pathname } = useLocation();
 
@@ -41,7 +37,7 @@ const CheckoutButton = ({ disabled, onCheckout, isLoading }: Props) => {
     );
   }
 
-  if (isAuthLoading || !currentUser || isLoading) {
+  if (isAuthLoading || isLoading) {
     return <LoadingButton />;
   }
 
@@ -53,14 +49,8 @@ const CheckoutButton = ({ disabled, onCheckout, isLoading }: Props) => {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-[425px] md:min-w-[700px] bg-gray-50 p-0">
-        <UserProfileForm
-          currentUser={currentUser}
-          onSave={onCheckout}
-          isLoading={isGetLoading}
-          title="Confirm Delivery Details"
-          buttonText="Continue to payment"
-        />
+      <DialogContent className="max-w-[425px] md:min-w-[700px] bg-transparent p-0 border-none">
+        <DeliveryDetailsForm onCheckout={onCheckout} />
       </DialogContent>
     </Dialog>
   );
