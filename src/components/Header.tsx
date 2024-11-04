@@ -4,7 +4,7 @@ import MainNav from "./MainNav";
 
 const Header = () => {
   return (
-    <div className="border-b-2 border-orange-500 py-6">
+    <div className="border-b-2 border-orange-500 py-6 sticky top-0 z-10 bg-white">
       <div className="container mx-auto flex justify-between items-center px-2">
         <div className="flex flex-row gap-2 items-center justify-center">
           <img src="/logo.svg" alt="logo" className="w-10 h-10" />

@@ -59,7 +59,7 @@ const MenuItemInput = ({ index, removeMenuItem }: Props) => {
         onClick={removeMenuItem}
       >
         <TrashIcon />
-        Remove
+        <span className="hidden md:block">Remove</span>
       </Button>
     </div>
   );

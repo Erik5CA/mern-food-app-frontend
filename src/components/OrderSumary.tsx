@@ -31,22 +31,26 @@ const OrderSumary = ({ restaurant, cartItems, removeFromCart }: Props) => {
       </CardHeader>
 
       <CardContent className="flex flex-col gap-5">
-        {cartItems.map((item) => (
-          <div key={item._id} className="flex justify-between">
-            <span>
-              <Badge className="mr-2">{item.quantity}</Badge>
-              {item.name}
-            </span>
-            <span className="flex items-center gap-1">
-              <CircleMinus
-                className="text-red-500 cursor-pointer"
-                size={20}
-                onClick={() => removeFromCart(item)}
-              />
-              $ {((item.price * item.quantity) / 100).toFixed(2)}
-            </span>
-          </div>
-        ))}
+        <div className="grid grid-cols-[1fr_90px] gap-2 items-center justify-center">
+          {cartItems.map((item) => (
+            // <div key={item._id} className="flex justify-between">
+            <>
+              <span>
+                <Badge className="mr-2">{item.quantity}</Badge>
+                {item.name}
+              </span>
+              <span className="flex items-center gap-1 ">
+                <CircleMinus
+                  className="text-red-500 cursor-pointer"
+                  size={20}
+                  onClick={() => removeFromCart(item)}
+                />
+                $ {((item.price * item.quantity) / 100).toFixed(2)}
+              </span>
+            </>
+            // </div>
+          ))}
+        </div>
 
         <Separator className="bg-orange-500" />
 

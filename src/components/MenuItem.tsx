@@ -16,7 +16,7 @@ type Props = {
 
 const MenuItem = ({ menuItem, addToCart }: Props) => {
   return (
-    <Card>
+    <Card className="flex flex-col justify-between">
       <CardHeader>
         <CardTitle>{menuItem.name}</CardTitle>
       </CardHeader>
